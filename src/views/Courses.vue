@@ -37,10 +37,12 @@
               <div class="course_text">{{course.description}}</div>
               <div class="course_footer d-flex align-items-center justify-content-start">
                 <div class="course_author_image"><img :src="require(`/public/images/${course.teacher_image}`)" alt=""/></div>
-                <div class="course_author_name">By <a href="#">{{course.teacher_name}}</a></div>
+                <div class="course_author_name">By <a>{{course.teacher_name}}</a></div>
                 <div class="course_sales ml-auto"><span>{{course.sales}}</span> Sales</div>
               </div>
-              <br><div class="text-center"><div class="button"><a href="#">Enroll</a></div></div>
+              <div v-if="userLoggedIn()">
+              <br ><div class="text-center" ><div class="button" @click="enroll()"><a>Enroll</a></div></div>
+                </div>
             </div>
           </div>
         </div>
@@ -69,10 +71,14 @@ export default {
         Footer,
         Header
     },
-  
-
-    data() {
+  data() {
         return {
+          user: {
+            id: '',
+            name: '',
+            email: '',
+            session_id: ''
+          },
         courses: [],
         }
     },
@@ -86,7 +92,17 @@ export default {
         this.courses = this.$store.getters['courses/getCourses']
       }
     },
-    computed: {},
+
+    getUser() {
+      this.user = this.$store.getters['user/getUser']
+    },
+    userLoggedIn: function () {
+      this.getUser()
+      for (let i in this.user) return true
+      return false
+    },
+    computed: {
+    },
   }
 }
 

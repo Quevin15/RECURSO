@@ -35,19 +35,21 @@
 							<div class="logo_container">
 								<router-link to="/">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="images/logo.png" alt=""></div>
+										<div class="logo_img"><img :src="require(`/public/images/logo.png`)" alt=""/></div>
 										<div class="logo_text">learn</div>
 									</div>
 								</router-link>
 							</div>
-							<nav class="main_nav_contaner ml-auto">
+							<nav class="main_nav_container ml-auto">
 								<ul class="main_nav">
-									<li><a href="index.html">home</a></li>
-									<li class="active"><a href="#">courses</a></li>
-									<li><a href="myCourses.html">My courses</a></li>									
-									<li><a href="register.html">Register</a></li>
-									<li><a href="login.html">Login</a></li>
-									<li>WELCOME STRANGER!</li>
+                  <li ><router-link to="/"><a>home</a></router-link></li>
+									<li><router-link to="courses"><a>courses</a></router-link></li>
+                  <li v-if ="!userLoggedIn()"><router-link to="register"><a>Register</a></router-link></li>
+                  <li v-if ="userLoggedIn()"><router-link to="myCourses"><a>My courses</a></router-link></li>
+                  <li v-if ="!userLoggedIn()"><router-link to="login"><a>Login</a></router-link></li>
+                  <li v-if ="userLoggedIn()"><button @click="userLogout()"><a>Logout</a></button></li>
+									<li v-if ="userLoggedIn()">Welcome {{user.name}}!</li>
+                  <li v-if ="!userLoggedIn()">Welcome STRANGER!</li>
 								</ul>
 							</nav>
 
@@ -63,12 +65,25 @@
 
 
 export default {
-    methods: {
-
+  data(){
+    return{
+      user: {}
+    }
+  },
+  methods: {
+    userLoggedIn(){
+      for(let i in this.user) return true
+      return false
     },
-    computed: {
-
+    userLogout(){
+      this.$store.commit('user/logoutUser')
+      this.userLoggedIn();
     },
+
+  },
+  mounted(){
+    this.user = this.$store.getters['user/getUser']
+  }
 }
 
 
