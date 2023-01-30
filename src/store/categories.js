@@ -24,7 +24,7 @@
   actions: {
     async getCategoriesFromDB({commit}) {
             try {
-                const response = await fetch('http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/coursecategories.php')
+                const response = await fetch('http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/coursecategories.php')
                 const data = await response.json()
                 console.log('received data:', data)                
                 commit('addCategories', data)

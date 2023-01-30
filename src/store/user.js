@@ -31,7 +31,7 @@ const user = {
   actions: {
     async userExists({commit}, user) {
       try {
-        const response = await fetch(`http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/users.php?email=${user.email}`, {
+        const response = await fetch(`http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/users.php?email=${user.email}`, {
           method: 'GET',
         })
         const data = await response.json()
@@ -54,7 +54,7 @@ const user = {
     }, 
     async addUser({state}) {
       try {
-          const response = await fetch('http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/users.php', {
+          const response = await fetch('http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/users.php', {
             method: 'POST',
             body: JSON.stringify(state.tmp_user),
             headers: { 'Content-type': 'text/html; charset=UTF-8' },
@@ -71,7 +71,7 @@ const user = {
     },
     async loginUser({commit}, user) {
       try {
-        const response = await fetch(`http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/users.php?email=${user.email}&password=${user.password}`)
+        const response = await fetch(`http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/users.php?email=${user.email}&password=${user.password}`)
         const data = await response.json()
         if ( data == null) {
           alert('Error: Wrong credentials')

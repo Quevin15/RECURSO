@@ -27,7 +27,7 @@
   actions: {
     async getMyEnrollsFromDB({commit},id) {
             try {
-                const response = await fetch(`http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/enrolls.php?user_id=${id}`)
+                const response = await fetch(`http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/enrolls.php?user_id=${id}`)
                 const data = await response.json()
                 console.log('received data:', data)                
                 commit('addEnrolls', data)
@@ -40,7 +40,7 @@
         },
     async newEnroll({commit}, newEnroll) {         
           try {
-              const response = await fetch('http://daw.deei.fct.ualg.pt/~a12345/RECURSO/api/enrolls.php', {
+              const response = await fetch('http://daw.deei.fct.ualg.pt/~a71311/RECURSO/api/enrolls.php', {
                   method: 'POST',
                   body: JSON.stringify(newEnroll),
                   headers: { 'Content-type': 'text/html; charset=UTF-8' },
