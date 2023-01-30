@@ -15,7 +15,7 @@
         <div class="owl-item">
           <!-- Background image artist https://unsplash.com/@benwhitephotography -->
 
-          <div class="home_slider_background" :style="{'background-image':'url(/public/images/index.jpg)'}"></div>
+          <div class="home_slider_background" :style="{'background-image': `url(${require('/public/images/index.jpg')})`}"></div>
           <div class="home_container">
             <div class="container">
               <div class="row">
@@ -38,7 +38,8 @@
         <!-- Slider Item -->
         <div class="owl-item">
           <!-- Background image artist https://unsplash.com/@benwhitephotography -->
-          <div class="home_slider_background" :style="{'background-image':'url(/public/images/index.jpg)'}"></div>
+
+          <div class="home_slider_background" :style="{'background-image': `url(${require('/public/images/index.jpg')})`}"></div>
           <div class="home_container">
             <div class="container">
               <div class="row">
