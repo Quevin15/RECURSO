@@ -1,4 +1,4 @@
 // vue.config.js
 module.exports = {
-  publicPath: '/RECURSO/dist'
+  publicPath: '/~a71311/RECURSO/dist'
 }
