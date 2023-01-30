@@ -24,8 +24,7 @@
 
 				<!-- Course -->
 
-        <div v-for="course in courses" :key="course.id">
-        <div class="col-lg-4 col-md-6">
+        <div  class="col-lg-4 col-md-6" v-for="course in courses" :key="course.id" >
           <div class="course">
             <div class="course_image"><img :src="require(`/public/images/${course.image}`)" alt=""/></div>
             <div class="course_body">
@@ -45,7 +44,6 @@
                 </div>
             </div>
           </div>
-        </div>
         </div>
 
 			</div>
